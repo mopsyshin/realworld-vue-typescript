@@ -39,8 +39,7 @@
           <feed-tab :menus="tabMenus"
                     ref="feedTab"
                     @change-tab="changeTab"/>
-          <article-list :current-page="currentPage"
-                        @changePage="changePage"
+          <article-list @changePage="changePage"
                         :list-status="listStatus"/>
         </div>
       

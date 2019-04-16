@@ -25,7 +25,7 @@
       
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2">
-          <comment-form/>
+          <comment-form v-if="isAuth"/>
           <comment-card v-for="comment in comments"
                         :key="comment.index"
                         :comment="comment"/>
@@ -50,7 +50,10 @@ import CommentCard from '@/components/comment/CommentCard.vue'
   }
 })
 export default class Article extends Vue {
-
+  get isAuth () {
+    return this.$store.getters.isAuth
+  }
+  
   get article (): any {
     return this.$store.getters.article
   }

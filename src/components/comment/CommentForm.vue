@@ -9,7 +9,7 @@
             </textarea>
     </div>
     <div class="card-footer">
-      <img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" />
+      <img :src="user.image" class="comment-author-img" />
       <button class="btn btn-sm btn-primary" @click="submitComment" :disabled="isDisabled">
         Post Comment
       </button>
@@ -19,13 +19,17 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component } from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
+import { User } from "../../types";
 
 @Component
 export default class CommentForm extends Vue {
-
   input: string = ''
   isDisabled: boolean = false
+
+  get user (): User {
+    return this.$store.getters.user
+  }
 
   async submitComment () {
     const temp: string = this.input
